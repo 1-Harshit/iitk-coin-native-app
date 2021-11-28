@@ -4,13 +4,13 @@ import { View } from "react-native";
 import * as Animatable from "react-native-animatable";
 
 import { AppState } from "redux-store/reducers";
-import { setCoins, setCurrentScreen, setName } from "redux-store/actions";
+import { setCoins, setCurrentScreen, setIsAuthenticated, setName } from "redux-store/actions";
 import { History, Text } from "components";
 import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
 import { history } from "api";
 import LABELS from "constant/labels";
-import { getBalance, getHistory, getName } from "callbacks";
+import { getBalance, getHistory, getName, isLoggedIn } from "callbacks";
 
 import styles from "../screen.styles";
 
@@ -47,6 +47,14 @@ const HomeScreen: () => JSX.Element = () => {
 	useEffect(() => {
 		setIsFetched(false);
 		getDetails(rollNo).then(([historyList, balance, name]) => {
+			if(historyList === [] || balance === 0 || name === "") {
+				isLoggedIn().then(({Status}) => {
+					if (!Status) {
+						dispatch(setIsAuthenticated(false));
+						dispatch(setCurrentScreen(ScreenType.LOGIN));
+					}
+				});
+			}
 			setTransaction(historyList);
 			dispatch(setCoins(balance));
 			dispatch(setName(name));
