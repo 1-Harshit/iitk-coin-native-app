@@ -6,7 +6,7 @@ import { auth } from "api";
 export const login = async (params: auth.LoginParams): Promise<boolean> => {
 	const response = await auth.postLogin(params);
 	if (response.Status === 200) {
-		return saveToken(response.Token);
+		return await saveToken(response.Token);
 	} else {
 		showMessage({
 			message: response.Payload,
@@ -16,11 +16,11 @@ export const login = async (params: auth.LoginParams): Promise<boolean> => {
 	}
 };
 
-export const saveToken = (tokens: string): boolean => {
+export const saveToken = async (tokens: string): Promise<boolean> => {
 	const tokenArr = tokens.split(";");
 	if (tokenArr.length > 0) {
-		saveAccessToken(tokenArr[0]);
-		saveRefreshToken(tokenArr[3]);
+		await saveAccessToken(tokenArr[0]);
+		await saveRefreshToken(tokenArr[3]);
 		return true;
 	} else {
 		return false;

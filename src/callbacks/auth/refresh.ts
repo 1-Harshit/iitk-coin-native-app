@@ -15,7 +15,7 @@ export const refreshToken = async (): Promise<boolean> => {
 	}
    
 	if (res.Status === 200) {
-		return saveToken(res.Token);
+		return await saveToken(res.Token);
 	}
 
 	return false;

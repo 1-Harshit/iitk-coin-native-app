@@ -131,7 +131,7 @@ const postLoginStatus = async (token: string): Promise<Response> => {
 
 const getTokenRefreshed = async (accessToken: string, refreshToken: string): Promise<Response> => {
 	let payload, status, token;
-	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.REFRESH_TOKEN, {}, {
+	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.REFRESH_TOKEN, {
 		headers: {
 			"cookie": accessToken + ";" + refreshToken
 		}

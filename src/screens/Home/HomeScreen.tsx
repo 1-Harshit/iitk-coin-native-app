@@ -10,7 +10,8 @@ import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
 import { history } from "api";
 import LABELS from "constant/labels";
-import { getBalance, getHistory, getName, isLoggedIn } from "callbacks";
+import { getBalance, getHistory, getName } from "callbacks";
+import { refreshToken } from "callbacks/auth/refresh";
 
 import styles from "../screen.styles";
 
@@ -37,8 +38,8 @@ const HomeScreen: () => JSX.Element = () => {
 	const [transaction, setTransaction] = useState<history.TransactionHistory[]>([]);
 
 	const getDetails = async (rollNo: string): Promise<[history.TransactionHistory[], number, string]> => {
+		const balance = await getBalance(rollNo);	// to prevent async refresh tokens
 		const historyList = getHistory(rollNo);
-		const balance = getBalance(rollNo);
 		const name = getName(rollNo);
 
 		return Promise.all([historyList, balance, name]);
@@ -48,10 +49,11 @@ const HomeScreen: () => JSX.Element = () => {
 		setIsFetched(false);
 		getDetails(rollNo).then(([historyList, balance, name]) => {
 			if(historyList === [] || balance === 0 || name === "") {
-				isLoggedIn().then(({Status}) => {
-					if (!Status) {
+				refreshToken().then((ok) => {
+					if (!ok) {
 						dispatch(setIsAuthenticated(false));
 						dispatch(setCurrentScreen(ScreenType.LOGIN));
+						return;
 					}
 				});
 			}
