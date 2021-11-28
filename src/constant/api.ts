@@ -24,6 +24,15 @@ const BACKEND = {
 			"STATUS": 401
 		}
 	},
+	GOOGLE_SHEET: {
+		// docs.google.com/spreadsheets/d/<--ID-->/edit#gid=0
+		ID: "1PmGM1aEtHkIQh0hi1hPOFHN_km3rfS_W21BAIdU9Q",
+		// credentials generated from https://console.cloud.google.com/
+		// refer: https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
+		GOOGLE_SERVICE_ACCOUNT_EMAIL: "something@iam.secret.gserviceaccount.com",
+		GOOGLE_PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY"
+		// Alternatetively you can use the key file
+	}
 };
 
 export { BACKEND };
