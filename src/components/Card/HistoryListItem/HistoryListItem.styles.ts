@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "flex-start",
 		opacity: 1,
+		paddingLeft: 10,
 	},
 });
 export default styles;

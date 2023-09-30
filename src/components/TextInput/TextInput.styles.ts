@@ -20,6 +20,7 @@ export default StyleSheet.create({
 	containerTitle: {
 		flexDirection: "row",
 		marginBottom: 4,
+		paddingLeft: 8,
 	},
 
 	error: {

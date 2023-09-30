@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { COLORS, FONT } from "styles";
 
-export const COLOR = "#305A90";
+export const COLOR = COLORS.BLUE;
 export const SIZE = FONT.SIZE.H3 * 2.3;
 
 export const styles = StyleSheet.create({
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
 		alignItems : "center",
 		backgroundColor : COLORS.WHITE,
 		borderRadius: 20,
-		elevation: 10,
+		elevation: 5,
 		flex : 1,
 		flexDirection: "row",
 		justifyContent : "space-around",
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
 		left:5
 	},
 	text : {
-		color : COLOR,
+		color : COLORS.BLUE,
 		fontSize : FONT.SIZE.H3 * 0.55,
 	}
 });

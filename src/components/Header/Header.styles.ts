@@ -4,7 +4,7 @@ import { COLORS, LAYOUT } from "styles";
 
 const styles = StyleSheet.create({
 	about: {
-		borderBottomWidth: 1,
+		borderBottomWidth: 0.75,
 		borderColor: COLORS.WHITE,
 		margin: 5,
 		padding: 2,
@@ -21,12 +21,15 @@ const styles = StyleSheet.create({
 		top: 0,
 		width: "100%",
 	},
+	iitk: {
+		letterSpacing: 4,
+	},
 	shrinked: {
 		alignItems: "center",
 		backgroundColor: COLORS.MAIN_BG,
 		height: LAYOUT.SCREEN.HEIGHT * 0.06,
 		width: "100%",
-	},
+	}
 });
 
 export default styles;

@@ -19,13 +19,15 @@ const styles = StyleSheet.create({
 		alignItems: "flex-start",
 		flex: 1,
 		fontSize,
-		justifyContent: "flex-start",
+		justifyContent:"flex-start",
 		maxHeight: 50,
 		opacity: 1,
+		paddingLeft: 3,
+		paddingTop:"0.9%",
 		width: 50,
 	},
 	icon: {
-		fontSize: fontAwesomeSize,
+		fontSize: fontAwesomeSize*1.2,
 	},
 });
 

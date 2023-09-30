@@ -148,7 +148,7 @@ const ItemTitle: React.FC<ItemTitleProps> = (props) => {
 					</View>
 					<View style={styles.text}>
 						<Text.Title bold style={{ fontSize }}>
-							{(type === "Reward" || type === "Redeem") ? (LABELS.SPACE) : (LABELS.SPACE + LABELS.SPACE)}{type}
+							{(type === "Reward" || type === "Redeem") ? ("") : (LABELS.SPACE)}{type}
 						</Text.Title>
 					</View>
 					<View style={styles.right}>
